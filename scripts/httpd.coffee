@@ -20,11 +20,11 @@
 spawn = require('child_process').spawn
 
 module.exports = (robot) ->
-
   robot.router.get "/hubot/version", (req, res) ->
     res.end robot.version
 
   robot.router.post "/hubot/ping", (req, res) ->
+    #robot.messageRoom('#lig_co_channel', 'hei')    
     res.end "PONG"
 
   robot.router.get "/hubot/time", (req, res) ->
@@ -40,3 +40,18 @@ module.exports = (robot) ->
   robot.router.get "/hubot/ip", (req, res) ->
     robot.http('http://ifconfig.me/ip').get() (err, r, body) ->
       res.end body
+
+  robot.router.post "/hubot/qiita_post", (req, res) ->
+    action_name = req.body.action
+    user_name = req.body.item.user.url_name
+    url = req.body.item.url
+    title = req.body.item.title
+    #if action_name is 'updated'
+    #message = '更新'
+    console.log(req.body.action);
+    console.log(req.body.item.user);
+    console.log('__',req.body.item);
+    console.log('^^^',req.body.user);
+    message = user_name + 'が記事を'+ action_name + 'しました。['+ title + ']'
+    robot.messageRoom('#qiita', message)
+    robot.messageRoom('#qiita', url)
