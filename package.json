@@ -27,7 +27,9 @@
     "hubot-twitter": "^2.1.1",
     "hubot-slack": "*",
     "xml2js": "*",
-    "request": "*"
+    "request": "*",
+    "hubot-chatwork": "*",
+    "hubot-slack": "*"
   },
   "engines": {
     "node": ">= 0.8.x",
