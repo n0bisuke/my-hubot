@@ -46,8 +46,6 @@ module.exports = (robot) ->
     user_name = req.body.item.user.url_name
     url = req.body.item.url
     title = req.body.item.title
-    #if action_name is 'updated'
-    #message = '更新'
     console.log(req.body.action);
     console.log(req.body.item.user);
     console.log('__',req.body.item);
